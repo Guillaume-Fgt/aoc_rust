@@ -30,10 +30,7 @@ pub fn fetch(year:u16,day:u8)  -> Result<String> {
         else {
             return Err("Failed to fetch input in txt file".into())
         }
-
-
     }
-
 }
 
 fn read_file(path:&str)->Result<String> {

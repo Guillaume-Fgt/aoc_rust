@@ -16,7 +16,7 @@ pub fn fetch(year:u16,day:u8)  -> Result<String> {
     if file_exists(&path) {
         println!("File already exists, reading from file");
         let input=read_file(&path)?;
-        return Ok(input);
+        Ok(input)
     }
     else {
         println!("File does not exist,downloading from AOC website");
@@ -25,16 +25,16 @@ pub fn fetch(year:u16,day:u8)  -> Result<String> {
         let input=get_input(&url, &token)?;
         if save_to_file(&path, &input).is_ok() {
             let input=read_file(&path)?;
-            return Ok(input);
+            Ok(input)
         }
         else {
-            return Err("Failed to fetch input in txt file".into())
+            Err("Failed to fetch input in txt file".into())
         }
     }
 }
 
 fn read_file(path:&str)->Result<String> {
-    let input=fs::read_to_string(&path)?;
+    let input=fs::read_to_string(path)?;
     Ok(input)
 }
 
@@ -50,11 +50,11 @@ fn get_input(url:&str,token:&str)->Result<String>{
 
 ///Save input text to a file
 fn save_to_file(path:&str,input:&str)->Result<()> {
-    fs::write(&path, input.trim_end())?;
+    fs::write(path, input.trim_end())?;
     Ok(())
 }
 
 fn create_dir(year:u16) ->Result<()>{
-    fs::create_dir_all(format!("{DIR}/{}",year.to_string()))?;
+    fs::create_dir_all(format!("{DIR}/{}",year))?;
     Ok(())
 }

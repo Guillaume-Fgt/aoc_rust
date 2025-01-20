@@ -6,14 +6,24 @@ fn main()-> inputs::Result<()>{
     for line in input.lines() {
         grid.push(line.trim().chars().collect());
     }
+    let slopes=[(1,1),(3,1),(5,1),(7,1),(1,2)];
+    let mut answer=Vec::new();
+    for slope in slopes {
+        answer.push(count_trees(&grid, slope));
+    }
+    println!("{:?}",answer.iter().copied().into_iter().reduce(|a,b| a*b).unwrap());
+    Ok(())
+}
+
+fn count_trees(grid:&Vec<Vec<char>>,mvt:(usize,usize))->i32 {
     let width=grid[0].len();
     let height=grid.len();
     let mut i=0;
     let mut j=0;
     let mut total_tree=0;
     loop {
-        i+=3;
-        j+=1;
+        i+=mvt.0;
+        j+=mvt.1;
         if j>height-1 {
             break;
         }
@@ -21,6 +31,6 @@ fn main()-> inputs::Result<()>{
             total_tree+=1;
         }
     }
-    println!("{total_tree}");
-    Ok(())
+    total_tree
+
 }

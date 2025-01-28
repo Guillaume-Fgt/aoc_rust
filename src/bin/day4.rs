@@ -1,5 +1,5 @@
 use aoc_rust::inputs;
-use std::{collections::{HashMap, HashSet}, u64};
+use std::collections::{HashMap, HashSet};
 
 //part1
 // fn main()->inputs::Result<()> {

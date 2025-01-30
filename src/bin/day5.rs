@@ -43,13 +43,13 @@ fn compute_place(instr:&str,left:i32,right:i32,lett:char)->i32 {
     for letter in instr.chars() {
         if letter==lett {
             if r-l==1 {
-                return min(l,r);
+                return l;
             }
             r=(r-l).div_euclid(2)+l;
         }
         else {
             if r-l==1 {
-                return max(l,r);
+                return r;
             }
             l=(r-l).div_euclid(2)+1+l;
         }

@@ -25,10 +25,10 @@ fn main()->inputs::Result<()> {
     let mut sum=0;
 
     for answer in input.split("\n\n") {
-        let mut group_a:Vec<HashSet<char>>=Vec::new();
+        let mut group_a:Vec<HashSet<u8>>=Vec::new();
         for a in answer.split("\n") {
             let mut set = HashSet::new();
-            set.extend(a.chars());
+            set.extend(a.bytes());
             group_a.push(set);
         }
         let total=group_a.into_iter().reduce(|a,b|a.intersection(&b).cloned().collect()).ok_or("error")?;

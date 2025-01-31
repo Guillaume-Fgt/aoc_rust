@@ -1,6 +1,4 @@
 
-use std::cmp::{max, min};
-
 use aoc_rust::inputs;
 
 // //part1

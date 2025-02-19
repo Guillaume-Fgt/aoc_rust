@@ -1,3 +1,3 @@
 target/
-inputs/
-src/bin/inputs/$tutor$
+src/bin/inputs/
+src/bin/$tutor$
